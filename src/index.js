@@ -88,10 +88,33 @@ console.log("=======================    Question 3   =======================");
 
 // const { getUser, getUserProfile } = require('./Helper.js');
 
+async function getUser() {
+  return {
+    role: "somerole",
+    id: 1
+  };
+}
+
+async function getUserProfile() {
+  return {
+    name: "Petro",
+    age: 15
+  };
+}
+
 async function getAge() {
-  // your code goes here
+  const user = await getUser((el) => el);
+  const id = user.id;
+  const info = await getUserProfile(id);
+  const age = info.age;
   return age;
 }
+
+// getAge().then(a => console.log(a));
+// const end = Date.now() + 1000;
+// while (Date.now() < end) {
+//   const muchCompute = 1 + 2 + 3;
+// }
 
 console.log("=======================    Question 4   =======================");
 
