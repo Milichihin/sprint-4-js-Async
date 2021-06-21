@@ -17,36 +17,95 @@ console.log("=======================    Question 1   =======================");
 // (between 0 and 2000) and string message and returns a Promise that waits
 // for specified amount of time (using delay argument) and resolves with the message.
 
-function getPromise(delay, message) {
-  let promise = new Promise(function (resolve, reject) {
-    return setTimeout(() => resolve(message), delay);
-  });
-  return promise;
-}
-
-// alternative solution with "Number.isInteger" condition
-
 // function getPromise(delay, message) {
 //   let promise = new Promise(function (resolve, reject) {
-//     return setTimeout(() => {
-//       return Number.isInteger(delay) && delay >= 0 && delay <= 2000
-//         ? (resolve(message), delay)
-//         : (reject(new Error("Whoops!")), delay);
-//       // return Number.isInteger(delay) && delay >= 0 && delay <= 2000
-//       //   ? (resolve(message), delay)
-//       //   : (reject(console.log("Error: Whoops!")), delay);
-//     });
+//     return setTimeout(() => resolve(message), delay);
 //   });
 //   return promise;
 // }
 
-getPromise(200, "'hello' in 1st Task").then(function (data) {
-  console.log(data);
-});
+// alternative solution with "Number.isInteger" condition
 
-const end = Date.now() + 1000;
-while (Date.now() < end) {
-  const muchCompute = 1 + 2 + 3;
+function getPromise(delay, message) {
+  let promise = new Promise(function (resolve, reject) {
+    return setTimeout(() => {
+      return Number.isInteger(delay) && delay >= 0 && delay <= 2000
+        ? (resolve(message), delay)
+        : (reject(new Error("Whoops!")), delay);
+      // return Number.isInteger(delay) && delay >= 0 && delay <= 2000 ? (resolve(message), delay) : (reject(console.log("Error: Whoops!")), delay)
+    });
+  });
+  return promise;
 }
 
+// getPromise('2000n', "'hello' in 1st Task").then(function (data) {
+//   console.log(data);
+// });
+
+// const end1 = Date.now() + 1000;
+// while (Date.now() < end1) {
+//   const muchCompute = 1 + 2 + 3;
+// };
+
 console.log("=======================    Question 2   =======================");
+
+// Write an add(x, y) function that takes two arguments x and y.
+// The function should return a Promise that resolves with the sum of the two arguments if they are Numbers,
+// or rejects with the message "Error!" otherwise.
+
+function add(x, y) {
+  return new Promise(function (resolve, reject) {
+    typeof (x + y) === "number" ? resolve(x + y) : reject("Error!");
+  });
+}
+
+// add(2, 2).then(res => console.log(res)); //4
+// const end2 = Date.now() + 1000;
+// while (Date.now() < end2) {
+//   const muchCompute = 1 + 2 + 3;
+// };
+
+// add(2,"a").catch(err => console.log(err)); //Error!
+// const end3 = Date.now() + 1000;
+// while (Date.now() < end3) {
+//     const muchCompute = 1 + 2 + 3;
+// };
+
+// add("b","a").catch(err => console.log(err)); //Error!
+// const end4 = Date.now() + 1000;
+// while (Date.now() < end4) {
+//     const muchCompute = 1 + 2 + 3;
+// };
+
+console.log("=======================    Question 3   =======================");
+
+// Implement the getAge() function to get user age. To find his age you need to call a getUser()
+// async function that return a user object in format {role: "somerole", id: 1}.
+// To get the actual user info you need to call another function getUserProfile(id),
+// that uses id returned from the previous function and return user info as an object
+
+// {name: "Petro", age: 15}. The getAge() must return the age of the user.
+
+// const { getUser, getUserProfile } = require('./Helper.js');
+
+async function getAge() {
+  // your code goes here
+  return age;
+}
+
+console.log("=======================    Question 4   =======================");
+
+// Implement the take() function that converts a sequence of iterated values into a sequence of length n.
+
+// function* take(n, iterable) {
+//   // your code here
+// }
+
+// // Example usage:
+// // Output:
+// // a
+// // b
+// const arr = ['a', 'b', 'c', 'd'];
+// for (const x of take(2, arr)) {
+//   console.log(x);
+// }
