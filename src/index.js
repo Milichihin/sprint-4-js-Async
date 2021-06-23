@@ -126,9 +126,6 @@ function* take(n, iterable) {
   }
 }
 
-// const arr = ['a', 'b', 'c', 'd'];
-// take(2, arr);
-
 // // Example usage:
 // // Output:
 // // a
