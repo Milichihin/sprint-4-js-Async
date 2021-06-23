@@ -55,21 +55,24 @@ console.log("=======================    Question 2   =======================");
 
 function add(x, y) {
   return new Promise(function (resolve, reject) {
-    typeof (x + y) === "number" ? resolve(x + y) : reject("Error!");
+    // typeof (x + y) === "number" ? resolve(x + y) : reject("Error!");
+    !isNaN(x * y) && typeof (x * y) !== "string"
+      ? resolve(x * y)
+      : reject("Error!");
   });
 }
 
-// add(2, 2).then(res => console.log(res)); //4
+// add(2, 2).then((res) => console.log(res)); //4
 // const end2 = Date.now() + 1000;
 // while (Date.now() < end2) {
 //   const muchCompute = 1 + 2 + 3;
-// };
+// }
 
-// add(2,"a").catch(err => console.log(err)); //Error!
-// const end3 = Date.now() + 1000;
-// while (Date.now() < end3) {
-//     const muchCompute = 1 + 2 + 3;
-// };
+add(2, "a").catch((err) => console.log(err)); //Error!
+const end3 = Date.now() + 1000;
+while (Date.now() < end3) {
+  const muchCompute = 1 + 2 + 3;
+}
 
 // add("b","a").catch(err => console.log(err)); //Error!
 // const end4 = Date.now() + 1000;
@@ -130,10 +133,10 @@ function* take(n, iterable) {
 // // Output:
 // // a
 // // b
-const arr = ["a", "b", "c", "d"];
-for (const x of take(2, arr)) {
-  console.log(x);
-}
+// const arr = ["a", "b", "c", "d"];
+// for (const x of take(2, arr)) {
+//   console.log(x);
+// }
 
 // const generator = take(2, arr);
 // console.log(generator.next());
