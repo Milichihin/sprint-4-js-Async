@@ -277,25 +277,26 @@ console.log("==============    Question 9   ==============");
 
 console.log("==============    Question 10   ==============");
 
-// const teams = [
-//   {name: 'Team1', members: ['Paul', 'Liza']},
-//   {name: 'Team2', members: ['Laura', 'Tim']},
-// ];
+const teams = [
+  { name: "Team1", members: ["Paul", "Liza"] },
+  { name: "Team2", members: ["Laura", "Tim"] }
+];
 
-// function* getMembers(members) {
-//   for (let i=0; i< members.length; i++) {
-//     yield members[i];
-//   }
-// }
+function* getMembers(members) {
+  for (let i = 0; i < members.length; i++) {
+    yield members[i];
+  }
+}
 
-// function* getTeams(teams) {
-//   for(let i=0; i< teams.length; i++) {
-//     yield teams[i].members[i];
-//     yield teams[i].members[i+1];
-//   }
-// }
+function* getTeams(teams) {
+  for (let i = 0; i < teams.length; i++) {
+    // yield teams[i].members[i];
+    // yield teams[i].members[i+1];
+    yield* getMembers(teams[i].members);
+  }
+} 
 
-// const obj = getTeams(teams);
+const obj = getTeams(teams);
 
-// console.log(obj.next());
-// console.log(obj.next());
+console.log(obj.next());
+console.log(obj.next());
