@@ -110,15 +110,28 @@ async function getUserProfile() {
   };
 }
 
+// async function getAge() {
+//   const user = await getUser((el) => el);
+//   const id = user.id;
+//   const info = await getUserProfile(id);
+//   const age = info.age;
+//   return age;
+// }
+
+// ALTERNATIVE SOLUTION
 async function getAge() {
-  const user = await getUser((el) => el);
-  const id = user.id;
-  const info = await getUserProfile(id);
-  const age = info.age;
+  const { id } = await getUser();
+  const { age } = await getUserProfile(id);
   return age;
 }
 
-// getAge().then(a => console.log(a));
+// ALTERNATIVE SOLUTION
+// async function getAge() {
+//   const {age} = await getUserProfile();
+//   return age;
+// }
+
+// getAge().then((a) => console.log(a));
 // const end = Date.now() + 1000;
 // while (Date.now() < end) {
 //   const muchCompute = 1 + 2 + 3;
@@ -294,9 +307,9 @@ function* getTeams(teams) {
     // yield teams[i].members[i+1];
     yield* getMembers(teams[i].members);
   }
-} 
+}
 
 const obj = getTeams(teams);
 
-console.log(obj.next());
-console.log(obj.next());
+// console.log(obj.next());
+// console.log(obj.next());
